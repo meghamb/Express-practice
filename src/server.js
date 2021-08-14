@@ -4,13 +4,14 @@ import { json, urlencoded } from "body-parser";
 import postRouter from './post/post-router';
 import { connect } from "./util/database";
 import userRouter from './user/user-router';
+import cors from 'cors';
 
 const app = express();
 
+app.use(cors());
 app.use(morgan('dev'));
 app.use(json());
 app.use(urlencoded({ extended: true }));
-
 app.use('/api/post', postRouter);
 app.use('/api/user', userRouter);
 
